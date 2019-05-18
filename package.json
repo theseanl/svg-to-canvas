@@ -1,0 +1,13 @@
+{
+	"name": "svg-to-canvas",
+	"version": "1.0.0",
+	"author": "theseanl",
+	"main": "convert.js",
+	"license": "MIT",
+	"dependencies": {
+		"async-file": "^2.0.2",
+		"express": "^4.16.4",
+		"fast-glob": "^2.2.6",
+		"puppeteer": "^1.14.0"
+	}
+}
