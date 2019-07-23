@@ -7,9 +7,6 @@ const path = require('path');
 const fg = require('fast-glob');
 const puppeteer = require('puppeteer');
  
-let globToSvgs = process.argv[2];
-let outputFileName = process.argv[3] || "./output.js";
-
 // Starts a local server
 const express = require('express');
 const port = 3000;
@@ -42,12 +39,7 @@ async function loadConversionPage() {
 	return { browser, page };
 }
 
-let timer = setTimeout(() => {
-	console.log('Operation taking too long');
-	process.exit(1);
-}, 3 * 60 * 1000);
-
-async function main() {
+async function svgToCanvas(globToSvgs, outputFileName) {
 	const [paths, _] = await Promise.all([fg(globToSvgs), loadConversionPage()]);
 	const { browser, page } = _;
 	const output = await Promise.all(paths.map(async (svgPath) => {
@@ -73,9 +65,6 @@ async function main() {
 		fs.writeFile(outputFileName, output.join("\n")),
 		browser.close()
 	]);
-	console.log('done');
-	clearTimeout(timer);
-	process.exit(0);
 }
 
-main();
+module.exports = svgToCanvas;

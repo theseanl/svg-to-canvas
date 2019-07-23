@@ -1,4 +1,4 @@
-# svg-to-canvas
+# svg-to-canvas-2d
 
 A command line tool for converting static SVGs into Javascript canvas API calls.
 
@@ -13,7 +13,7 @@ yarn install
 ## Usage
 
 ```
-node convert.js [glob_of_svg_files] [output_file_name]
+svg-to-canvas [glob_of_svg_files[,glob2[, ...]]] [output_file_name]
 ```
 ```
 // output.js - one line per file, ./path/to/svg_file.svg is converted to:
